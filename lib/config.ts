@@ -4,6 +4,10 @@ export const accounts = {
     account: '026885593400',
     region: 'ap-northeast-1',
   },
+    stg: {
+    account: '026885593400',
+    region: 'ap-northeast-3',
+  },
 };
 
 export const github = {
@@ -11,4 +15,5 @@ export const github = {
   repo: 'cdk-pipeline-sample',
   branch: 'main',
   tokenSecretName: 'github-token-cdk-pipeline-sample-key',
+  tokenkey:'token'
 };

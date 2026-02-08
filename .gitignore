@@ -1,8 +1,12 @@
+# 既存の .js を無視する設定
 *.js
+# Lambda 配下の js は Git に含める
+!lambda/*.js
+
 !jest.config.js
 *.d.ts
 node_modules
 
-# CDK asset staging directory
+# CDK asset staging direct
 .cdk.staging
 cdk.out

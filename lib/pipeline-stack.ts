@@ -16,7 +16,7 @@ export class PipelineStack extends cdk.Stack {
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub(`${github.owner}/${github.repo}`,
           github.branch, {
-          authentication: githubToken.secretValueFromJson('token'),
+          authentication: githubToken.secretValueFromJson(github.tokenkey),
         }),
 
         commands: [
@@ -33,13 +33,16 @@ export class PipelineStack extends cdk.Stack {
         super(scope, id, props);
 
         new AppStack(this, 'AppStack', {
-          stageName: id,   // ← ステージ名をそのまま渡す
+          stageName: id, 
           env: props?.env,
         });
       }
     }
     pipeline.addStage(new AppStage(this, 'Dev', {
       env: accounts.dev,
+    }));
+    pipeline.addStage(new AppStage(this, 'Stg', {
+      env: accounts.stg,
     }));
   }
 }
